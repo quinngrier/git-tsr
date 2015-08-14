@@ -29,7 +29,18 @@ shift
 
 for server do
 
-  :
+  url=`git config --get "tsr.${server}"`
+  case "${?}" in
+    0)
+      :
+      ;;
+    *)
+      cat >&2 <<EOF
+warning: unknown server: ${server}
+EOF
+      continue
+      ;;
+  esac
 
 done
 
