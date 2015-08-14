@@ -3,6 +3,18 @@
 LC_ALL=C
 export LC_ALL
 
+case "${#}" in
+  0|1)
+    cat >&2 <<'EOF'
+usage: git tsr <object> <server>...
+EOF
+    exit 128
+    ;;
+  *)
+    :
+    ;;
+esac
+
 exit 0
 
 #
