@@ -15,6 +15,16 @@ EOF
     ;;
 esac
 
+hash=`git rev-parse --verify "${1}"`
+case "${?}" in
+  0)
+    :
+    ;;
+  *)
+    exit 1
+    ;;
+esac
+
 exit 0
 
 #
