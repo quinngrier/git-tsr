@@ -25,6 +25,8 @@ case "${?}" in
     ;;
 esac
 
+shift
+
 exit 0
 
 #
