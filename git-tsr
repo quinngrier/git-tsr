@@ -42,6 +42,13 @@ EOF
       ;;
   esac
 
+  if openssl ts -query -sha1 -digest "${hash}" -cert >.git-tsr.tsq; then
+    :
+  else
+    rm -f .git-tsr.tsq
+    continue
+  fi
+
 done
 
 exit 0
