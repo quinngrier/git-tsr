@@ -49,6 +49,16 @@ EOF
     continue
   fi
 
+  if curl --header 'Content-Type: application/timestamp-query' \
+          --data-binary @.git-tsr.tsq --url "${url}" \
+          --silent --show-error >.git-tsr.tsr; then
+    :
+  else
+    rm -f .git-tsr.tsq
+    rm -f .git-tsr.tsr
+    continue
+  fi
+
 done
 
 exit 0
