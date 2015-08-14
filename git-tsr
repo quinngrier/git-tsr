@@ -59,6 +59,15 @@ EOF
     continue
   fi
 
+  if openssl ts -reply -in .git-tsr.tsr -text >.git-tsr.txt; then
+    :
+  else
+    rm -f .git-tsr.tsq
+    rm -f .git-tsr.tsr
+    rm -f .git-tsr.txt
+    continue
+  fi
+
 done
 
 exit 0
