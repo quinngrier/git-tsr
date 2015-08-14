@@ -101,6 +101,16 @@ EOF
       ;;
   esac
 
+  if cat .git-tsr.tsr >"${date}-${hash}-${server}.tsr"; then
+    :
+  else
+    rm -f .git-tsr.tsq
+    rm -f .git-tsr.tsr
+    rm -f .git-tsr.txt
+    rm -f "${date}-${hash}-${server}.tsr"
+    continue
+  fi
+
 done
 
 exit 0
