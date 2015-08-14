@@ -27,6 +27,12 @@ esac
 
 shift
 
+for server do
+
+  :
+
+done
+
 exit 0
 
 #
