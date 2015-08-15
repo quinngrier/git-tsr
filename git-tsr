@@ -127,7 +127,13 @@ EOF
     :
   else
     rm -f .git-tsr.tsr
-    rm -f "${target}"
+    if rm -f "${target}"; then
+      :
+    else
+      cat >&2 <<EOF
+warning: unable to remove possibly corrupt file '${target}'
+EOF
+    fi
     cat >&2 <<EOF
 warning: skipping server '${server}' due to errors
 EOF
