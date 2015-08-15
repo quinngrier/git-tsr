@@ -10,9 +10,6 @@ usage: git tsr <object> <server>...
 EOF
     exit 128
     ;;
-  *)
-    :
-    ;;
 esac
 
 hash=`git rev-parse --verify "${1}"`
