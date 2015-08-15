@@ -38,7 +38,7 @@ for server do
       ;;
     *)
       cat >&2 <<EOF
-warning: unknown server: ${server}
+warning: skipping unknown server '${server}'
 EOF
       one_or_more_servers_skipped=1
       continue
