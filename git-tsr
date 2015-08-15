@@ -59,10 +59,11 @@ EOF
     continue
   fi
 
+  rm -f .git-tsr.tsq
+
   if openssl ts -reply -in .git-tsr.tsr -text >.git-tsr.txt; then
     :
   else
-    rm -f .git-tsr.tsq
     rm -f .git-tsr.tsr
     rm -f .git-tsr.txt
     continue
@@ -94,7 +95,6 @@ EOF
       :
       ;;
     *)
-      rm -f .git-tsr.tsq
       rm -f .git-tsr.tsr
       rm -f .git-tsr.txt
       continue
@@ -104,14 +104,12 @@ EOF
   if cat .git-tsr.tsr >"${date}-${hash}-${server}.tsr"; then
     :
   else
-    rm -f .git-tsr.tsq
     rm -f .git-tsr.tsr
     rm -f .git-tsr.txt
     rm -f "${date}-${hash}-${server}.tsr"
     continue
   fi
 
-  rm -f .git-tsr.tsq
   rm -f .git-tsr.tsr
   rm -f .git-tsr.txt
 
