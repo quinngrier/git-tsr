@@ -122,11 +122,12 @@ EOF
 
   rm -f .git-tsr.txt
 
-  if cat .git-tsr.tsr >"${date}-${hash}-${server}.tsr"; then
+  target="${date}-${hash}-${server}.tsr"
+  if cat .git-tsr.tsr >"${target}"; then
     :
   else
     rm -f .git-tsr.tsr
-    rm -f "${date}-${hash}-${server}.tsr"
+    rm -f "${target}"
     cat >&2 <<EOF
 warning: skipping server '${server}' due to errors
 EOF
