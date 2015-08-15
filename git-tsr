@@ -49,6 +49,9 @@ EOF
     :
   else
     rm -f .git-tsr.tsq
+    cat >&2 <<EOF
+warning: skipping server '${server}' due to errors
+EOF
     one_or_more_servers_skipped=1
     continue
   fi
@@ -60,6 +63,9 @@ EOF
   else
     rm -f .git-tsr.tsq
     rm -f .git-tsr.tsr
+    cat >&2 <<EOF
+warning: skipping server '${server}' due to errors
+EOF
     one_or_more_servers_skipped=1
     continue
   fi
@@ -71,6 +77,9 @@ EOF
   else
     rm -f .git-tsr.tsr
     rm -f .git-tsr.txt
+    cat >&2 <<EOF
+warning: skipping server '${server}' due to errors
+EOF
     one_or_more_servers_skipped=1
     continue
   fi
@@ -103,6 +112,9 @@ EOF
     *)
       rm -f .git-tsr.tsr
       rm -f .git-tsr.txt
+      cat >&2 <<EOF
+warning: skipping server '${server}' due to errors
+EOF
       one_or_more_servers_skipped=1
       continue
       ;;
@@ -115,6 +127,9 @@ EOF
   else
     rm -f .git-tsr.tsr
     rm -f "${date}-${hash}-${server}.tsr"
+    cat >&2 <<EOF
+warning: skipping server '${server}' due to errors
+EOF
     one_or_more_servers_skipped=1
     continue
   fi
