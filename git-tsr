@@ -1,5 +1,11 @@
 #!/bin/sh
 
+#
+# Not using LC_ALL=C is a bad idea. Without it, we have to guess which
+# programs need which locale variables set to which values in order to
+# play nicely. With it, everything plays nicely by default.
+#
+
 LC_ALL=C
 export LC_ALL
 
