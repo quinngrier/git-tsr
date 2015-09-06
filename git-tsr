@@ -146,6 +146,8 @@ EOF
 
   rm -f .git-tsr.tsr
 
+  sleep 10
+
 done
 
 exit "${skipped_one_or_more_servers}"
