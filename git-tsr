@@ -87,27 +87,24 @@ EOF
     continue
   fi
 
-  date=`sed -n '/Time stamp: / {
-                  s/Time stamp: //
-                  s/ GMT//
-                  s/\(.*\) \(.*\) \(.*\) \(.*\)/\4-\1-\2T\3Z/
-                  s/Jan/01/
-                  s/Feb/02/
-                  s/Mar/03/
-                  s/Apr/04/
-                  s/May/05/
-                  s/Jun/06/
-                  s/Jul/07/
-                  s/Aug/08/
-                  s/Sep/09/
-                  s/Oct/10/
-                  s/Nov/11/
-                  s/Dec/12/
-                  s/-\(.\)T/-0\1T/
-                  s/-//g
-                  s/://g
-                  p
-                }' .git-tsr.txt`
+  date=`awk '
+/Time stamp:/ {
+  x["Jan"] = "01"
+  x["Feb"] = "02"
+  x["Mar"] = "03"
+  x["Apr"] = "04"
+  x["May"] = "05"
+  x["Jun"] = "06"
+  x["Jul"] = "07"
+  x["Aug"] = "08"
+  x["Sep"] = "09"
+  x["Oct"] = "10"
+  x["Nov"] = "11"
+  x["Dec"] = "12"
+  gsub(/:/, "")
+  printf "%s%s%.2dT%sZ\n", $6, x[$3], $4, $5
+}
+' .git-tsr.txt`
   case "${?}" in
     0)
       :
